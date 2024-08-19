@@ -5,11 +5,10 @@
 </head>
 <body>
     <h1>Paper Minecraft Modifier</h1>
-    <input type="text" id="numberInput" placeholder="Enter PM world">
-    <span>Buttons May Lag The site</span>
-    <button onclick="corruptWorld()">Corrupt World</button>
-    <button onclick="generateRandomGrid()">Generate Random Grid</button>
-    <textarea id="output"></textarea>
+<input type="text" id="inputNumbers" value="">
+<button onclick="corruptWorld()">Corrupt World</button>
+<button onclick="generateRandomGrid()">Generate Random Grid</button>
+<p id="output"></p>
     <script>
 function corruptWorld() {
   const input = document.getElementById("inputNumbers").value;
