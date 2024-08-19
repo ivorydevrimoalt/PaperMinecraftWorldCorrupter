@@ -12,22 +12,28 @@
     <textarea id="output"></textarea>
     <script>
 function corruptWorld() {
-  const input = document.getElementById("numberInput").value;
-  const output = document.getElementById("output");
+  const input = document.getElementById("inputNumbers").value;
+  if (input === "123100244" || input === "123100243") {
+    document.getElementById("output").textContent = input;
+    return;
+  }
 
-  // Basic scrambling logic (you can improve this)
-  const numbers = input.split('').map(Number);
-  numbers.sort(() => Math.random() - 0.5);
-  output.value = numbers.join('');
+  const numbers = input.split("").map(Number);
+  for (let i = numbers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+  }
+  document.getElementById("output").textContent   
+ = numbers.join("");
 }
 
 function generateRandomGrid() {
-  const output = document.getElementById("output");
-  let randomNumbers = [];
+  const numbers = [];
   for (let i = 0; i < 1730; i++) {
-    randomNumbers.push(Math.floor(Math.random() * 10)); // Generates numbers from 0 to 9
+    numbers.push(Math.floor(Math.random() * 10));
   }
-  output.value = randomNumbers.join('');
+  document.getElementById("inputNumbers").value = numbers.join("");
+  corruptWorld();
 }
     </script>
 </body>
