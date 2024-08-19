@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paper Minecraft Modifier</title>
+</head>
+<body>
+    <h1>Paper Minecraft Modifier</h1>
+    <input type="text" id="numberInput" placeholder="Enter PM world">
+    <span>Buttons May Lag The site</span>
+    <button onclick="corruptWorld()">Corrupt World</button>
+    <button onclick="generateRandomGrid()">Generate Random Grid</button>
+    <textarea id="output"></textarea>
+    <script>
+function corruptWorld() {
+  const input = document.getElementById("numberInput").value;
+  const output = document.getElementById("output");
+
+  // Basic scrambling logic (you can improve this)
+  const numbers = input.split('').map(Number);
+  numbers.sort(() => Math.random() - 0.5);
+  output.value = numbers.join('');
+}
+
+function generateRandomGrid() {
+  const output = document.getElementById("output");
+  let randomNumbers = [];
+  for (let i = 0; i < 1730; i++) {
+    randomNumbers.push(Math.floor(Math.random() * 10)); // Generates numbers from 0 to 9
+  }
+  output.value = randomNumbers.join('');
+}
+    </script>
+</body>
+</html>
