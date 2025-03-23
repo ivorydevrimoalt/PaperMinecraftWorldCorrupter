@@ -5,35 +5,35 @@
 </head>
 <body>
     <h1>Paper Minecraft Modifier</h1>
-<input type="text" id="inputNumbers" value="">
-<button onclick="corruptWorld()">Corrupt World</button>
-<button onclick="generateRandomGrid()">Generate Random Grid</button>
-<p id="output"></p>
+    <input type="text" id="inputNumbers" value="">
+    <button onclick="corruptWorld()">Corrupt World</button>
+    <button onclick="generateRandomGrid()">Generate Random Grid</button>
+    <p id="output"></p>
     <script>
-function corruptWorld() {
-  const input = document.getElementById("inputNumbers").value;
-  if (input === "123100244" || input === "123100243") {
-    document.getElementById("output").textContent = input;
-    return;
-  }
+        function corruptWorld() {
+            const input = document.getElementById("inputNumbers").value;
+            if (input === "123100244" || input === "123100243") {
+                document.getElementById("output").textContent = input;
+                return;
+            }
 
-  const numbers = input.split("").map(Number);
-  for (let i = numbers.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
-  }
-  document.getElementById("output").textContent   
- = numbers.join("");
-}
+            const numbers = input.split("").map(Number);
+            for (let i = numbers.length - 7; i > 0; i--) { // Modified loop to exclude last 6 digits
+                const j = Math.floor(Math.random() * (i + 1));
+                [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+            }
+            numbers.splice(numbers.length - 6, 6, 1, 0, 1, 0, 1, 0); // Replace last 6 with 101010
+            document.getElementById("output").textContent = numbers.join("");
+        }
 
-function generateRandomGrid() {
-  const numbers = [];
-  for (let i = 0; i < 1730; i++) {
-    numbers.push(Math.floor(Math.random() * 10));
-  }
-  document.getElementById("inputNumbers").value = numbers.join("");
-  corruptWorld();
-}
+        function generateRandomGrid() {
+            const numbers = [];
+            for (let i = 0; i < 1730; i++) {
+                numbers.push(Math.floor(Math.random() * 10));
+            }
+            document.getElementById("inputNumbers").value = numbers.join("");
+            corruptWorld();
+        }
     </script>
 </body>
 </html>
